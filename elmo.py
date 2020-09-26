@@ -95,6 +95,14 @@ The ranch dimension ends
 @elmo.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(elmo))
+    await elmo.change_presence(activity=discord.Game(name="n.help"))
+    '''user.setPresence({
+        status: "online",  //You can show online, idle....
+        game: {
+            name: "Using n.help",  //The message shown
+            type: "PLAYING" //PLAYING: WATCHING: LISTENING: STREAMING:
+        }
+        '''
 
 @elmo.event
 async def on_message(message): #ignores if message is from elmo
@@ -120,6 +128,5 @@ async def on_message(message): #ignores if message is from elmo
     elif message.content.startswith('n.elmoify->'):
         await message.channel.send("```" + elmoifycase2(message) + "\n```")
         
-
 
 elmo.run(token)#perm number 3533888 
