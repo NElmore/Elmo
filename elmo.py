@@ -44,9 +44,20 @@ def musicSuggestor(message):
         #placeholder image in case of none attached
         filen =  "https://thumbs.dreamstime.com/b/arab-musician-violin-guitar-isolated-white-arab-musician-violin-guitar-isolated-white-100298368.jpg"
     if (filen == "https://thumbs.dreamstime.com/b/arab-musician-violin-guitar-isolated-white-arab-musician-violin-guitar-isolated-white-100298368.jpg"):
-        filen = yt.search(str(outputtrack[1]) + '-' + str(outputtrack[0]))[0]['video_thumbnail']
+        try:
+            filen = yt.search(str(outputtrack[1]) + '-' + str(outputtrack[0]))[0]['video_thumbnail']
+        except:
+            filen = "https://thumbs.dreamstime.com/b/arab-musician-violin-guitar-isolated-white-arab-musician-violin-guitar-isolated-white-100298368.jpg"
     embedVar = discord.Embed(title=outputtrack[1] + " - " + outputtrack[0], color=0x00ff00)
-    embedVar.add_field(name='https://www.youtube.com/watch?v=' + yt.search(str(outputtrack[1]) + '-' + str(outputtrack[0]))[0]['video_id'], value = yt.search(str(outputtrack[1]) + '-' + str(outputtrack[0]))[0]['video_description'], inline = False)
+    videourl = "__ __"
+    videodes = "__ __"    
+    try:
+        videourl = 'https://www.youtube.com/watch?v=' + yt.search(str(outputtrack[1]) + '-' + str(outputtrack[0]))[0]['video_id']
+        videodes = yt.search(str(outputtrack[1]) + '-' + str(outputtrack[0]))[0]['video_description']
+    except IndexError:
+        videourl = "__ __"
+        videodes = "__ __"
+    embedVar.add_field(name=videourl, value = videodes, inline = False)
     embedVar.set_thumbnail(url = filen)
     return embedVar
 
