@@ -122,7 +122,7 @@ async def on_message(message): #ignores if message is from elmo
 
     if "n.help" == message.content.lower():
         embedVar = discord.Embed(title="__Command List__", color=0x00ff00)#todo, add command list here
-        embedVar.add_field(name = 'n.help: Well... you\'re here\nn.elmo: Summon a random elmo\nn.music <tag>: Elmo gives you a random music suggestion related to provided tag\nn.ud <word>: Learning words on Urban Dictionary with Elmo\nn.elmoify <phrase or paragraph>: Elmo will do the rest', value = "n.elmoify has a second option to run with a name you input, running the command n.elmoify-><Name>",inline = False)
+        embedVar.add_field(name = 'n.help: Well... you\'re here\nn.elmo: Summon a random elmo\nn.music <tag>: Elmo gives you a random music suggestion related to provided tag\nn.ud <word>: Learning words on Urban Dictionary with Elmo\nn.elmoify <phrase or paragraph>: Elmo will do the rest', value = "n.elmoify has a second option to run with a name you input, running the command n.elmoify-><Name> <phrase or paragraph>",inline = False)
         await message.channel.send(embed=embedVar)
     elif "n.elmo" == message.content.lower(): #add a self search function sometime?
         filen = 'ElmoPics/' + str(random.randrange(1, 30)) + '.png'
